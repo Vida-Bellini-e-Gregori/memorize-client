@@ -23,10 +23,10 @@ export function Card(){
       w-[700px] h-[400px]
       p-16 pb-10 
       bg-neutral-900 
-      border rounded-lg border-gray-800 ${isEditingCard && 'border-dashed border-2'}
+      border rounded-lg border-neutral-800 ${isEditingCard && 'border-dashed '} border-4
       relative
     `}>
-      { isShowingAnwser &&
+      { (isShowingAnwser && !isEditingCard) &&
         <button className="absolute top-4 right-5 flex" onClick={() => setEditingCard(true)}>
           <Text size="sm" className="text-gray-400 text-sm" >Editar</Text>
         </button>

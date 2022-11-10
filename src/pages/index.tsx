@@ -26,13 +26,13 @@ export default function Home() {
         <div className="w-20 h-20 mr-20"></div>    
           <Card /> 
         <button className="
-          w-20 h-20 rounded-full border border-gray-600
+          w-20 h-20 rounded-full border border-neutral-800 border-4
           flex justify-center items-center
           border-dashed
           duration-200
           hover:bg-neutral-800
           md:mt-10 lg:ml-20 lg:mt-0
-        "> <p className="text-gray-600 font-light text-4xl" >+</p> </button>
+        "> <p className="text-neutral-700 font-light text-4xl" >+</p> </button>
       </div>
 
     </div>
