@@ -1,53 +1,40 @@
-import { useState } from "react";
 import { Button } from "../components/Button";
 import { MainFilter } from "../components/MainFilter";
-import { Text } from "../components/Text";
+
+import { useSession, signIn, signOut } from "next-auth/react"
+import { Card } from "../components/Card";
+import { useState } from "react";
 
 export default function Home() {
-  const [ isShowingAnwser, setIsShowingAnwser ] = useState(false)
-
-  function handleRevealAnswer() {
-    setIsShowingAnwser(true)
-  }
-
-  function handleSetDifficultu() {
-    setIsShowingAnwser(false)
+  
+  const session = useSession();
+  function seeLog() {
+    console.log(session)
   }
 
   return (
     <div className="h-screen">
-      <div className="w-full p-5">
+      <div className="w-full p-5 flex">
         <MainFilter />
+        {/* <Button  label="Logar com google" onClick={signIn} color='bg-red-500'/>
+        <Button  label="seee log" onClick={seeLog} color='bg-orange-500'/> */}
       </div>
-      {/* <div className="h-full flex justify-center items-center"> */}
       <div className="
-        absolute left-0 right-0 top-0 bottom-0 m-auto w-[600px] h-[300px]
-        flex flex-col justify-between items-center
+        h-full flex flex-col justify-center items-center mt-[-5%]
+        lg:flex-row
       ">
-        <div>
-          <Text family="serif">
-            Qual nome do osso do braço que parece com o nome de uma tecnologia de transimissão de audio?
-          </Text>
-          { isShowingAnwser && 
-            <div>
-              <hr className="my-5 border-neutral-500"/>
-              <Text>
-                Rádio
-              </Text>
-            </div>
-          }
-        </div>
-          { isShowingAnwser 
-            ? <div className="flex gap-4">
-              <Button label="Fácil" color='bg-green-600' onClick={handleSetDifficultu}/>
-              <Button label="Médio" color='bg-yellow-500' onClick={handleSetDifficultu}/>
-              <Button label="Difícil" color='bg-red-500' onClick={handleSetDifficultu}/>
-            </div>
-            
-            : <Button label="Revelar" onClick={handleRevealAnswer}/>
-          }
-        
+        <div className="w-20 h-20 mr-20"></div>    
+          <Card /> 
+        <button className="
+          w-20 h-20 rounded-full border border-gray-600
+          flex justify-center items-center
+          border-dashed
+          duration-200
+          hover:bg-neutral-800
+          md:mt-10 lg:ml-20 lg:mt-0
+        "> <p className="text-gray-600 font-light text-4xl" >+</p> </button>
       </div>
+
     </div>
   )
 }
