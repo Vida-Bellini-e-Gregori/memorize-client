@@ -6,6 +6,7 @@ interface TextProps{
   family?: 'sans' | 'serif';
   weight?: 'light' | 'medium' | 'bold';
   color?: 'white' | 'black';
+  className?: string;
 }
 
 export function Text({ 
@@ -14,6 +15,7 @@ export function Text({
   family='sans', 
   weight='medium',
   color='white',
+  className,
 }: TextProps) {
 
   const colorStyle = color === 'white' ? 'text-neutral-100' : 'text-neutral-900'
@@ -26,6 +28,7 @@ export function Text({
         text-${size}   
         font-${family}
         font-${weight}
+        ${className}
       `}
       >
       {children}

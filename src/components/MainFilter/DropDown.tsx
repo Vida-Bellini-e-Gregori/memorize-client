@@ -19,11 +19,10 @@ export function DropDown({ title, isOnFocus=false }: FilterUnit) {
      {/*select*/}
       <div className={`
           w-32
-          mx-3
+          px-2
           box-border 
           text-white 
           flex justify-center items-center
-          px-2
           rounded
           cursor-pointer
           transition-all ease-out duration-200

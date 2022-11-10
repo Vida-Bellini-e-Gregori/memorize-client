@@ -12,7 +12,7 @@ export function MainFilter() {
       { subjects.map(subject => (
         <>
           <DropDown key={subject.id} title={subject.title} />
-          <Text > {'-'} </Text>
+          <Text> {'-'} </Text>
         </>
       ))
 
