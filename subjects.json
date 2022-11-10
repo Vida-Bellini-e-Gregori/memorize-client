@@ -1,0 +1,66 @@
+[
+  { 
+    "id": 1,
+    "title": "Português",
+    "questions": [
+      { "id": 1, "question": "1- Qual preço da batata?", "answer": "1- R$ 27,50", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 2, "question": "2- Qual a formula da água?", "answer": "2- H2O", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 3, "question": "3- Qual teu nome?", "answer": "3- Greg", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 4, "question": "4- Quantos X pra trocar 1 lâmpada", "answer": "4- depende", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 5, "question": "5- Era ____ vez", "answer": "5- 'uma'", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 6, "question": "6- 2x2", "answer": "6- 4", "lastSeenDate": 123456, "gapTime": 152}
+    ]
+  },
+  { 
+    "id": 2,
+    "title": "História",
+    "questions": [
+      { "id": 1, "question": "1- uma pegunta aleatoria?", "answer": "1- R$ 27,50", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 2, "question": "2- Qual a formula da água?", "answer": "2- H2O", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 3, "question": "3- Qual teu nome?", "answer": "3- Greg", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 4, "question": "4- Quantos X pra trocar 1 lâmpada", "answer": "4- depende", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 5, "question": "5- Era ____ vez", "answer": "5- 'uma'", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 6, "question": "6- 2x2", "answer": "6- 4", "lastSeenDate": 123456, "gapTime": 152}
+    ]
+  },
+  { 
+    "id": 3,
+    "title": "Geografia",
+    "questions": [
+      { "id": 1, "question": "1- O que da pra fazer com uma banana que não da pra fazer com uma bolacha?", "answer": "1- R$ 27,50", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 2, "question": "2- Qual a formula da água?", "answer": "2- H2O", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 3, "question": "3- Qual teu nome?", "answer": "3- Greg", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 4, "question": "4- Quantos X pra trocar 1 lâmpada", "answer": "4- depende", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 5, "question": "5- Era ____ vez", "answer": "5- 'uma'", "lastSeenDate": 123456, "gapTime": 152},
+      { "id": 6, "question": "6- 2x2", "answer": "6- 4", "lastSeenDate": 123456, "gapTime": 152}
+    ],
+    "subjects": [
+      { 
+        "id": 3,
+        "title": "Geopolítica",
+        "questions": [
+          { "id": 1, "question": "O organizador de uma competição de lançamento de dardos pretende tornar o campeonato mais competitivo. Pelas regras atuais da competição, numa rodada, o jogador lança 3 dardos e pontua caso acerte pelo menos um deles no alvo. O organizador considera que, em média, os jogadores têm, em cada lançamento, 1/2 de probabilidade de acertar um dardo no alvo.", "answer": "Essa pergunta é um texte para textos grandes", "lastSeenDate": 123456, "gapTime": 152},
+          { "id": 2, "question": "2- Qual a formula da água?", "answer": "2- H2O", "lastSeenDate": 123456, "gapTime": 152},
+          { "id": 3, "question": "3- Qual teu nome?", "answer": "3- Greg", "lastSeenDate": 123456, "gapTime": 152},
+          { "id": 4, "question": "4- Quantos X pra trocar 1 lâmpada", "answer": "4- depende", "lastSeenDate": 123456, "gapTime": 152},
+          { "id": 5, "question": "5- Era ____ vez", "answer": "5- 'uma'", "lastSeenDate": 123456, "gapTime": 152},
+          { "id": 6, "question": "6- 2x2", "answer": "6- 4", "lastSeenDate": 123456, "gapTime": 152}
+        ],
+        "subjects": [
+          { 
+            "id": 3,
+            "title": "Brasil",
+            "questions": [
+              { "id": 1, "question": "1- Quem foi o primeiro presidente do Brasil?", "answer": "1- Deodoro da Fonseca", "lastSeenDate": 123456, "gapTime": 152},
+              { "id": 2, "question": "2- Qual a formula da água?", "answer": "2- H2O", "lastSeenDate": 123456, "gapTime": 152},
+              { "id": 3, "question": "3- Qual teu nome?", "answer": "3- Greg", "lastSeenDate": 123456, "gapTime": 152},
+              { "id": 4, "question": "4- Quantos X pra trocar 1 lâmpada", "answer": "4- depende", "lastSeenDate": 123456, "gapTime": 152},
+              { "id": 5, "question": "5- Era ____ vez", "answer": "5- 'uma'", "lastSeenDate": 123456, "gapTime": 152},
+              { "id": 6, "question": "6- 2x2", "answer": "6- 4", "lastSeenDate": 123456, "gapTime": 152}
+            ]
+          } 
+        ]        
+      } 
+    ]
+  }  
+]
