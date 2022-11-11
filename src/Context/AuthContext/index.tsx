@@ -1,6 +1,5 @@
 import GoogleProvider from "next-auth/providers/google";
 import { createContext, ReactNode } from "react";
-import subjects from '../../../subjects.json'
 
 
 // providers: [
@@ -29,11 +28,11 @@ interface DeckContextProviderProps {
   children: ReactNode
 }
 
-export const DeckContext = createContext({} as DeckContextProps)
+export const DeckContext = createContext({})
 
 export function DeckContextProvider({ children }:DeckContextProviderProps) {
   return(
-    <DeckContext.Provider value={{ subjects }}>
+    <DeckContext.Provider value={{  }}>
       {children}
     </DeckContext.Provider>
   )

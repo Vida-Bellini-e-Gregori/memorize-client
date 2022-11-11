@@ -1,8 +1,8 @@
 import { MainFilter } from "../components/MainFilter";
 
 import { useSession, signIn, signOut } from "next-auth/react"
-import { Card } from "../components/Card";
 import { AddCardButton } from "../components/AddCardButton";
+import { AllCards } from "../components/AllCards";
 
 export default function Home() {
   
@@ -14,6 +14,7 @@ export default function Home() {
   return (
     <div className="h-screen">
       <div className="w-full p-5 flex">
+
         <MainFilter />
         {/* <Button  label="Logar com google" onClick={signIn} color='bg-red-500'/>
         <Button  label="seee log" onClick={seeLog} color='bg-orange-500'/> */}
@@ -26,9 +27,11 @@ export default function Home() {
       ">
         {/*this is for equilibrium, just keep with the same size that the "AddCardButton has"*/}    
         <div className="w-20 h-20 mr-20" /> 
-        <Card /> 
+        <AllCards />
         <AddCardButton />
       </div>          
+
+
 
     </div>
   )

@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Text } from "../Text";
 import { BsInfoCircle } from 'react-icons/bs' 
 import { Tooltip } from "../Tooltip";
 
-export function Card(){
-  const [ initialQuestionText, setInitialQuestionText ] = useState('Qual nome do osso do braço que parece com o nome de uma tecnologia de transimissão de audio?')
-  const [ initialAnswerText, setInitialAnswerText ] = useState('Rádio')
 
-  const [ questionText, setQuestionText ] = useState(initialQuestionText)
-  const [ answerText, setAnswerText ] = useState(initialAnswerText)
+interface CardProps{
+  id: number;
+  initialQuestionText: string;
+  initialAnswerText: string;
+}
+
+
+interface CardComponentProps{
+  card: CardProps;
+  handleCallNextCard(): void;
+}
+
+
+export function Card({ card, handleCallNextCard }: CardComponentProps){
+  const [ currentQuestionText, setCurrentQuestionText ] = useState(card.initialQuestionText)
+  const [ currentAnswerText, setCurrentAnswerText ] = useState(card.initialAnswerText)
   const [ isShowingAnwser, setIsShowingAnwser ] = useState(false)
   const [ isEditingCard, setEditingCard ] = useState(false)
 
@@ -18,21 +29,27 @@ export function Card(){
   }
 
   function handleSetDifficulty() {
+    handleCallNextCard()
     setIsShowingAnwser(false)
+    console.log(card)
   }
 
   function handleSaveChanges() {
-    setInitialQuestionText(questionText)
-    setInitialAnswerText(answerText)
-    console.log('initialQuestionText', initialQuestionText)
+    console.log('initialQuestionText', card.initialQuestionText)
     setEditingCard(false)
   }
 
   function handleCancelChanges() {
-    setAnswerText(initialAnswerText)
-    setQuestionText(initialQuestionText)
+    setCurrentAnswerText(card.initialAnswerText)
+    setCurrentQuestionText(card.initialQuestionText)
     setEditingCard(false)
   }
+
+  useEffect(() => {
+    setCurrentQuestionText(card.initialQuestionText)
+    setCurrentAnswerText(card.initialAnswerText)
+
+  },[card])  
 
   const textAreaStyle = `
     leading-relaxed
@@ -52,7 +69,7 @@ export function Card(){
       flex flex-col justify-between items-center
       w-[500px] h-[500px]
       md:w-[700px] md:h-[400px]
-      p-16 pb-10 
+      px-16 pt-12 pb-10 
       bg-neutral-900 
       border rounded-lg border-neutral-800 ${isEditingCard && 'border-dashed '} border-4
       relative
@@ -66,16 +83,16 @@ export function Card(){
 
       <div className="w-full">
         <div role={'textbox'} contentEditable={isEditingCard}
-          onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setQuestionText(e.target.innerText)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setCurrentQuestionText(e.target.innerText)}
           className={textAreaStyle} 
-        >{questionText}</div>
+        >{currentQuestionText}</div>
         { isShowingAnwser && 
           <>
             <hr className="my-5 border-neutral-500"/>
             <div role={'textbox'} contentEditable={isEditingCard}
-              onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setAnswerText(e.target.innerText)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setCurrentAnswerText(e.target.innerText)}
               className={textAreaStyle} 
-            >{answerText}</div>
+            >{currentAnswerText}</div>
           </>
         }
       </div>

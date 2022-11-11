@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import subjects from '../../../subjects.json'
+import subjects from '../../../src/utils/subjects.json'
 
 export type Subject = {
   id: number;
