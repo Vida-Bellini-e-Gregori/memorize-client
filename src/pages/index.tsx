@@ -1,9 +1,8 @@
-import { Button } from "../components/Button";
 import { MainFilter } from "../components/MainFilter";
 
 import { useSession, signIn, signOut } from "next-auth/react"
 import { Card } from "../components/Card";
-import { useState } from "react";
+import { AddCardButton } from "../components/AddCardButton";
 
 export default function Home() {
   
@@ -20,20 +19,16 @@ export default function Home() {
         <Button  label="seee log" onClick={seeLog} color='bg-orange-500'/> */}
       </div>
       <div className="
-        h-full flex flex-col justify-center items-center mt-[-5%]
+        mt-[-5%]
+        h-full 
+        flex flex-col justify-center items-center 
         lg:flex-row
       ">
-        <div className="w-20 h-20 mr-20"></div>    
-          <Card /> 
-        <button className="
-          w-20 h-20 rounded-full border border-neutral-800 border-4
-          flex justify-center items-center
-          border-dashed
-          duration-200
-          hover:bg-neutral-800
-          md:mt-10 lg:ml-20 lg:mt-0
-        "> <p className="text-neutral-700 font-light text-4xl" >+</p> </button>
-      </div>
+        {/*this is for equilibrium, just keep with the same size that the "AddCardButton has"*/}    
+        <div className="w-20 h-20 mr-20" /> 
+        <Card /> 
+        <AddCardButton />
+      </div>          
 
     </div>
   )
