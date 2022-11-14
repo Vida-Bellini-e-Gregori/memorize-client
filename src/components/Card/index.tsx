@@ -22,6 +22,9 @@ interface CardComponentProps{
 
 
 export function Card({ card, handleCallNextCard }: CardComponentProps){
+  const [ lastSavedQuestionText, setlastSavedQuestionText ] = useState(card.initialQuestionText)
+  const [ lastSavedAnswerText, setlastSavedAnswerText ] = useState(card.initialAnswerText)
+
   const [ currentQuestionText, setCurrentQuestionText ] = useState(card.initialQuestionText)
   const [ currentAnswerText, setCurrentAnswerText ] = useState(card.initialAnswerText)
   const [ isShowingAnwser, setIsShowingAnwser ] = useState(false)
@@ -38,13 +41,15 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
   }
 
   function handleSaveChanges() {
-    console.log('initialQuestionText', card.initialQuestionText)
+    setlastSavedQuestionText(currentQuestionText)
+    setlastSavedAnswerText(currentAnswerText)
+
     setEditingCard(false)
   }
 
   function handleCancelChanges() {
-    setCurrentAnswerText(card.initialAnswerText)
-    setCurrentQuestionText(card.initialQuestionText)
+    setCurrentQuestionText(lastSavedQuestionText)
+    setCurrentAnswerText(lastSavedAnswerText)
     setEditingCard(false)
   }
 
@@ -54,6 +59,19 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
 
   },[card])  
 
+  const textAreaStyle = `
+    leading-relaxed
+    w-full
+    text-neutral-50
+    bg-neutral-900
+    overflow-visible
+    outline-none
+    decoration-gray-900
+    resize-none
+    text-justify
+    font-serif
+  `
+
   return (
     <div className={`
       flex flex-col justify-between items-center
@@ -61,7 +79,7 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
       md:w-[700px] md:h-[400px]
       px-16 pt-12 pb-10 
       bg-neutral-900 
-      border rounded-lg border-neutral-800 ${isEditingCard && 'border-dashed '} border-4
+      rounded-lg border-neutral-800 ${isEditingCard ? 'border-dashed border-4': 'border'} 
       relative
     `}>
 
@@ -74,11 +92,12 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
 
       {/* Text areas of question and answer */}
       <div className="w-full">
-        <TextArea currentText={currentQuestionText} setCurrentText={setCurrentQuestionText} isEditingCard/>
+
+        <TextArea currentText={currentQuestionText} setCurrentText={setCurrentQuestionText} isEditingCard />
         { isShowingAnwser && 
           <>
             <hr className="my-5 border-neutral-500"/>
-            <TextArea currentText={currentAnswerText} setCurrentText={setCurrentAnswerText} isEditingCard/>
+            <TextArea currentText={currentAnswerText} setCurrentText={setCurrentAnswerText} isEditingCard />
           </>
         }
       </div>

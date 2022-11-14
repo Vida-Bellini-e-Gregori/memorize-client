@@ -14,8 +14,9 @@ export function AllCards () {
 
   function handleCallNextCard() {
     if(cards){
-      if(cards?.length < cardIndex ){
+      if(cards?.length-1 > cardIndex ){
         setCardIndex(cardIndex+1)
+        console.log(cardIndex)
       }
     }
   }
@@ -23,7 +24,7 @@ export function AllCards () {
   useEffect(() => {
     async function fetchData() {
       try{
-        await fetch('http://192.168.0.115:8000/cards')
+        await fetch('http://192.168.0.111:8000/cards')
         .then(response => response.json())
         .then(json => setcards(json))
 
