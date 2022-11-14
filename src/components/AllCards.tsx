@@ -50,6 +50,16 @@ export function AllCards () {
           }}
         /> 
       }  
+      { !cards &&
+        <Card 
+          handleCallNextCard={handleCallNextCard}
+          card={{ 
+            id: 0,
+            initialQuestionText:'Nenhum Card Cadastrado',
+            initialAnswerText:'Não edita isso, dps eu vejo kk', 
+          }}
+        /> 
+      }        
     </div>
   )
 }

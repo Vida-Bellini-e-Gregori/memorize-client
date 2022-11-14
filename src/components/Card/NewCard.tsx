@@ -5,7 +5,6 @@ import { BsInfoCircle } from 'react-icons/bs'
 import { Tooltip } from "../Tooltip";
 import { TextArea } from "./TextArea";
 import { DifficultyButtons } from "./DifficultyButtons";
-import { EditingButtons } from "./EditingButtons";
 
 
 interface CardProps{
@@ -65,14 +64,12 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
       relative
     `}>
 
-      {/* Button to start editting */}
       { (isShowingAnwser && !isEditingCard) &&
         <button className="absolute top-4 right-5 flex" onClick={() => setEditingCard(true)}>
           <Text size="sm" className="text-gray-400 text-sm" >Editar</Text>
         </button>
       }
 
-      {/* Text areas of question and answer */}
       <div className="w-full">
         <TextArea currentText={currentQuestionText} setCurrentText={setCurrentQuestionText} isEditingCard/>
         { isShowingAnwser && 
@@ -83,20 +80,33 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
         }
       </div>
 
-      {/* Reveal answer button */}
-      { (!isEditingCard && !isShowingAnwser) &&
-        <Button label="Revelar" onClick={handleRevealAnswer}
-          className="hover:bg-neutral-300"
-        />  
-      }
+        { (!isEditingCard && !isShowingAnwser) &&
+          <Button label="Revelar" onClick={handleRevealAnswer}
+            className="hover:bg-neutral-300"
+          />  
+        }
 
-      { (!isEditingCard && isShowingAnwser) &&
-        <DifficultyButtons handleSetDifficulty={handleSetDifficulty}/>      
-      }
-      
-      { (isEditingCard && isShowingAnwser) &&
-        <EditingButtons handleSaveChanges={handleSaveChanges} handleCancelChanges={handleCancelChanges}/>      
-      }
+        {/* Difficulty buttons */}
+        { (!isEditingCard && isShowingAnwser) &&
+          <DifficultyButtons handleSetDifficulty={handleSetDifficulty}/>      
+        }
+        
+        {/* Editing buttons */}
+        { (isEditingCard && isShowingAnwser) &&
+          <div className="flex gap-5">
+            <Button 
+              label="Salvar alterações" 
+              onClick={() => handleSaveChanges()} 
+              className="hover:bg-neutral-300"
+            />
+            <Button 
+              label="Cancelar edição" 
+              onClick={() => handleCancelChanges()} 
+              color='bg-red-500'
+              className="hover:bg-red-600"
+            />      
+          </div>        
+        }
 
 
       
