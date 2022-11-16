@@ -2,11 +2,13 @@ import { Card } from "./Card";
 import { Text } from "./Text";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack } from 'react-icons/io'
+import { api } from "../services/api";
 
 interface CardProps{
   id: number;
   question: string;
   answer: string;
+  difficultyId: number;
 }
 
 
@@ -33,13 +35,12 @@ export function AllCards () {
 
   async function fetchData() {
     try{
-      await fetch('http://192.168.0.111:8000/cards')
-      .then(response => response.json())
-      .then(json => {
-        setcards(json)
-        console.log('json', json)
-        setCardsAmount(json.length)
-      })
+      await api('/cards')
+        .then(json => {
+          setcards(json.data)
+          console.log('json.data', json.data)
+          setCardsAmount(json.data.length)
+        })
 
     }catch(err){
       console.log(err)
@@ -64,6 +65,7 @@ export function AllCards () {
         </button>
         <Text>{cardIndex+1}/{cardsAmount} </Text> 
         <Text className="text-neutral-500">cartas prontas para revisão</Text>
+        { cards && <Text className="text-neutral-500">- ultima dificuldade {cards[cardIndex].difficultyId}</Text>}
       </div>
       { cards &&
         <Card 

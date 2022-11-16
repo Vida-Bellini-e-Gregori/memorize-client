@@ -6,6 +6,7 @@ import { Tooltip } from "../Tooltip";
 import { TextArea } from "./TextArea";
 import { DifficultyButtons } from "./DifficultyButtons";
 import { EditingButtons } from "./EditingButtons";
+import { api } from "../../services/api";
 
 
 interface CardProps{
@@ -34,10 +35,21 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
     setIsShowingAnwser(true)
   }
 
-  function handleSetDifficulty() {
-    handleCallNextCard()
+  async function postDifficulty(difficultyId: number) {
+    try{
+      await api.post(`/cards/${card.id}/difficulty/${difficultyId}`)
+
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  function handleSetDifficulty(difficultyId: number) {
+    postDifficulty(difficultyId)
     setIsShowingAnwser(false)
-    console.log(card)
+    handleCallNextCard()
+
+
   }
 
   function handleSaveChanges() {
