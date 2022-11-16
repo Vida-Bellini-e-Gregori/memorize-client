@@ -16,6 +16,7 @@ export function TextArea({
   ...rest
 }: TextAreaProps){
 
+  // to make the textarea size responsive
   function adjustHeight(el: HTMLTextAreaElement){
     el.style.height = '1px';
     el.style.height = (el.scrollHeight)+"px";

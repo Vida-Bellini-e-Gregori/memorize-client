@@ -5,7 +5,7 @@ interface TextProps{
   size?: 'sm' | 'base' | 'lg';
   family?: 'sans' | 'serif';
   weight?: 'light' | 'medium' | 'bold';
-  color?: 'white' | 'black';
+  color?: 'white' | 'medium' | 'black' ;
   className?: string;
 }
 
@@ -18,13 +18,20 @@ export function Text({
   className,
 }: TextProps) {
 
-  const colorStyle = color === 'white' ? 'text-neutral-100' : 'text-neutral-900'
+
+  const colorStyle = () => {
+    switch(color) {
+      case 'white': return 'text-neutral-100';
+      case 'medium': return 'text-neutral-500';
+      case 'black': return 'text-neutral-900';
+    } 
+  }
 
   return (
     <p 
       className={`
         leading-relaxed
-        ${colorStyle}
+        ${colorStyle()}
         text-${size}   
         font-${family}
         font-${weight}
