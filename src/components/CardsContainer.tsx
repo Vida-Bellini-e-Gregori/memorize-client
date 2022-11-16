@@ -61,7 +61,7 @@ export function CardsContainer ({ toggleIsAddingCard }:CardsContainer) {
     <div>    
       <div className="flex items-center justify-between mb-2">
         <div className="flex gap-2 items-center">          
-          <button onClick={handleCallPreviousCard}>
+          <button onClick={handleCallPreviousCard} disabled={cardIndex <= 0}>
             <IoIosArrowBack 
               size='18px' 
               color={cardIndex > 0 ? 'white' : '#383838'}/

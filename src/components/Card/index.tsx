@@ -86,24 +86,12 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
 
   },[card])  
 
-  const textAreaStyle = `
-    leading-relaxed
-    w-full
-    text-neutral-50
-    bg-neutral-900
-    overflow-visible
-    outline-none
-    decoration-gray-900
-    resize-none
-    text-justify
-    font-serif
-  `
 
   return (
     <div className={`
       flex flex-col justify-between items-center
-      w-[500px] h-[500px]
-      md:w-[700px] md:h-[400px]
+      min-w-[500px] min-h-[500px]
+      md:min-w-[700px] md:min-h-[400px]
       px-16 pt-12 pb-10 
       bg-neutral-900 
       rounded-lg border-neutral-800 ${isEditingCard ? 'border-dashed border-4': 'border'} 
@@ -118,8 +106,7 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
       }
 
       {/* Text areas of question and answer */}
-      <div className="w-full">
-
+      <div className="w-full mb-10">
         <TextArea
           currentText={currentQuestionText}
           setCurrentText={setCurrentQuestionText}

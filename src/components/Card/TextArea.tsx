@@ -31,13 +31,12 @@ export function TextArea({
       adjustHeight(textAreaRef.current)
     }
 
-  }, [textAreaRef])
+  }, [currentText])
 
 
   return (
     <textarea ref={textAreaRef}
       readOnly={!isEditingCard}
-      onKeyUp={(e: any ) => adjustHeight(e.target)}
       value={currentText}
       onChange={(e) => setCurrentText(e.target.value)}
       className={`

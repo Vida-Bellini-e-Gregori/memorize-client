@@ -1,11 +1,10 @@
-import { BsInfoCircle } from "react-icons/bs";
 import { Button } from "../Button";
-import { Tooltip } from "../Tooltip";
 
 interface EditingButtonsProps {
   handleSaveChanges(): void;
   handleCancelChanges(): void;
 }
+
 
 export function EditingButtons({ handleSaveChanges, handleCancelChanges }: EditingButtonsProps) {
   return (
