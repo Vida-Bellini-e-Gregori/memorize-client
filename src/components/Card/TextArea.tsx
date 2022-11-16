@@ -32,6 +32,7 @@ export function TextArea({
         overflow-hidden
         leading-relaxed
         w-full
+        h-[26px]
         text-neutral-50
         bg-neutral-900
         outline-none

@@ -3,6 +3,7 @@ import { MainFilter } from "../components/MainFilter";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { AddCardButton } from "../components/AddCardButton";
 import { AllCards } from "../components/AllCards";
+import { Text } from "../components/Text";
 import { useState } from "react";
 import { NewCard } from "../components/Card/NewCard";
 
@@ -14,7 +15,7 @@ export default function Home() {
     console.log(session)
   }
 
-  function handleStartCreatingCard() {
+  function toggleIsAddingCard() {
     setIsAddingCard(!isAddingCard)
   }
 
@@ -35,12 +36,19 @@ export default function Home() {
         {/*this is for equilibrium, just keep with the same size that the "AddCardButton has"*/}    
         {!isAddingCard && (
           <>
-            <div className="w-20 h-20 mr-20" /> 
-            <AllCards />        
-            <AddCardButton handleStartCreatingCard={handleStartCreatingCard}/>
+            <div className="relative">
+              <button onClick={toggleIsAddingCard} className="
+                absolute right-2 -top-2 pl-3 pr-4
+                border border-neutral-700 rounded 
+                duration-200 hover:bg-neutral-800
+              ">
+                <Text color="medium">+ Adicionar card</Text>
+              </button>
+              <AllCards />        
+            </div>
           </>
         )}
-        {isAddingCard && <NewCard setIsAddingCard={handleStartCreatingCard} />}        
+        {isAddingCard && <NewCard toggleIsAddingCard={toggleIsAddingCard} />}        
       </div>          
 
 
