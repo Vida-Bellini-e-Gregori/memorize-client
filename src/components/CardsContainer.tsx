@@ -8,11 +8,14 @@ interface CardProps{
   id: number;
   question: string;
   answer: string;
-  difficultyId: number;
+  difficulty: number;
 }
 
+interface CardsContainer {
+  toggleIsAddingCard(): void;
+}
 
-export function AllCards () {
+export function CardsContainer ({ toggleIsAddingCard }:CardsContainer) {
   const [ cardIndex, setCardIndex ] = useState(0)
   const [ cards, setcards ] = useState<CardProps[]>()
   const [ cardsAmount, setCardsAmount ] = useState(0)
@@ -56,16 +59,25 @@ export function AllCards () {
 
   return (
     <div>    
-      <div className="flex gap-2 items-center">
-        <button onClick={handleCallPreviousCard}>
-          <IoIosArrowBack 
-            size='18px' 
-            color={cardIndex > 0 ? 'white' : '#383838'}/
-          >
-        </button>
-        <Text>{cardIndex+1}/{cardsAmount} </Text> 
-        <Text className="text-neutral-500">cartas prontas para revisão</Text>
-        { cards && <Text className="text-neutral-500">- ultima dificuldade {cards[cardIndex].difficultyId}</Text>}
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex gap-2 items-center">          
+          <button onClick={handleCallPreviousCard}>
+            <IoIosArrowBack 
+              size='18px' 
+              color={cardIndex > 0 ? 'white' : '#383838'}/
+              >
+          </button>
+          <Text>{cardIndex+1}/{cardsAmount} </Text> 
+          <Text color='medium'>Cartas prontas para revisão</Text>
+        </div>
+        <button onClick={toggleIsAddingCard} className="
+          pl-3 pr-4 
+          mr-2
+          border border-neutral-700 rounded 
+          duration-200 hover:bg-neutral-800
+        ">
+          <Text color="medium">+ Adicionar card</Text>
+        </button>        
       </div>
       { cards &&
         <Card 

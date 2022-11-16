@@ -37,22 +37,37 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
 
   async function postDifficulty(difficultyId: number) {
     try{
-      await api.post(`/cards/${card.id}/difficulty/${difficultyId}`)
+      await api.patch(`/cards/${card.id}/difficulty/${difficultyId}`)
 
     }catch(err){
       console.log(err)
     }
   }
 
-  function handleSetDifficulty(difficultyId: number) {
-    postDifficulty(difficultyId)
+  async function handleSetDifficulty(difficultyId: number) {
+    await postDifficulty(difficultyId)
     setIsShowingAnwser(false)
     handleCallNextCard()
 
-
   }
 
-  function handleSaveChanges() {
+
+  async function postChanges() {
+    try{
+        await api.put(`/cards/${card.id}`, {
+          deckId: 1,
+          question: currentQuestionText,
+          answer: currentAnswerText,
+        })
+
+    }catch(err){
+      console.log(err)
+    }
+  }    
+
+
+  async function handleSaveChanges() {
+    postChanges()
     setlastSavedQuestionText(currentQuestionText)
     setlastSavedAnswerText(currentAnswerText)
 
@@ -98,18 +113,26 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
       {/* Button to start editting */}
       { (isShowingAnwser && !isEditingCard) &&
         <button className="absolute top-4 right-5 flex" onClick={() => setEditingCard(true)}>
-          <Text size="sm" className="text-gray-400 text-sm" >Editar</Text>
+          <Text size="sm" className="text-gray-400 text-sm">Editar</Text>
         </button>
       }
 
       {/* Text areas of question and answer */}
       <div className="w-full">
 
-        <TextArea currentText={currentQuestionText} setCurrentText={setCurrentQuestionText} isEditingCard />
+        <TextArea
+          currentText={currentQuestionText}
+          setCurrentText={setCurrentQuestionText}
+          isEditingCard={isEditingCard}
+        />
         { isShowingAnwser && 
           <>
-            <hr className="my-5 border-neutral-500"/>
-            <TextArea currentText={currentAnswerText} setCurrentText={setCurrentAnswerText} isEditingCard />
+            <hr className="my-5 border-neutral-800"/>
+            <TextArea
+              currentText={currentAnswerText}
+              setCurrentText={setCurrentAnswerText}
+              isEditingCard={isEditingCard}
+            />
           </>
         }
       </div>
