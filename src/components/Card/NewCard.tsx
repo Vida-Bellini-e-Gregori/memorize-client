@@ -72,7 +72,7 @@ export function NewCard({ toggleIsAddingCard }:NewCardProps){
                 font-sans
                 font-thin
                 text-sm
-                text-neutral-500           
+                text-neutral-50           
             ">
               Pergunta
             </span>
@@ -84,8 +84,8 @@ export function NewCard({ toggleIsAddingCard }:NewCardProps){
               className="placeholder:text-neutral-500"
             ></TextArea>
           </div>
-          <hr className="my-5 border-neutral-500"/>
-          <div className="relative flex mt-8">
+          <hr className="my-5 border-neutral-800"/>
+          <div className="relative flex mt-12">
             <span className="
                 content-['Pergunta'] 
                 absolute 
@@ -94,7 +94,7 @@ export function NewCard({ toggleIsAddingCard }:NewCardProps){
                 font-sans
                 font-thin
                 text-sm
-                text-neutral-500           
+                text-neutral-50              
             ">
               Resposta
             </span>

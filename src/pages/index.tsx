@@ -2,7 +2,7 @@ import { MainFilter } from "../components/MainFilter";
 
 import { useSession, signIn, signOut } from "next-auth/react"
 import { AddCardButton } from "../components/AddCardButton";
-import { AllCards } from "../components/AllCards";
+import { CardsContainer } from "../components/CardsContainer";
 import { Text } from "../components/Text";
 import { useState } from "react";
 import { NewCard } from "../components/Card/NewCard";
@@ -23,7 +23,7 @@ export default function Home() {
     <div className="h-screen">
       <div className="w-full p-5 flex">
 
-        <MainFilter />
+        {/* <MainFilter /> */}
         {/* <Button  label="Logar com google" onClick={signIn} color='bg-red-500'/>
         <Button  label="seee log" onClick={seeLog} color='bg-orange-500'/> */}
       </div>
@@ -37,14 +37,7 @@ export default function Home() {
         {!isAddingCard && (
           <>
             <div className="relative">
-              <button onClick={toggleIsAddingCard} className="
-                absolute right-2 -top-2 pl-3 pr-4
-                border border-neutral-700 rounded 
-                duration-200 hover:bg-neutral-800
-              ">
-                <Text color="medium">+ Adicionar card</Text>
-              </button>
-              <AllCards />        
+              <CardsContainer toggleIsAddingCard={toggleIsAddingCard}/>        
             </div>
           </>
         )}

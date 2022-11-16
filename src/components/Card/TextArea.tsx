@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 
 
 interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement>{
@@ -16,15 +17,26 @@ export function TextArea({
   ...rest
 }: TextAreaProps){
 
+  const textAreaRef = useRef(null)
+
   // to make the textarea size responsive
   function adjustHeight(el: HTMLTextAreaElement){
     el.style.height = '1px';
     el.style.height = (el.scrollHeight)+"px";
   }
+  
+
+  useEffect(() => {
+    if(textAreaRef.current){
+      adjustHeight(textAreaRef.current)
+    }
+
+  }, [textAreaRef])
 
 
   return (
-    <textarea readOnly={!isEditingCard}
+    <textarea ref={textAreaRef}
+      readOnly={!isEditingCard}
       onKeyUp={(e: any ) => adjustHeight(e.target)}
       value={currentText}
       onChange={(e) => setCurrentText(e.target.value)}
