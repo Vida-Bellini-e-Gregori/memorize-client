@@ -22,7 +22,7 @@ export function Text({
   const colorStyle = () => {
     switch(color) {
       case 'white': return 'text-neutral-100';
-      case 'medium': return 'text-neutral-500';
+      case 'medium': return 'text-neutral-100/50';
       case 'black': return 'text-neutral-900';
     } 
   }

@@ -19,10 +19,11 @@ interface CardProps{
 interface CardComponentProps{
   card: CardProps;
   handleCallNextCard(): void;
+  deleteCardFromArray(cardId: number): void;
 }
 
 
-export function Card({ card, handleCallNextCard }: CardComponentProps){
+export function Card({ card, handleCallNextCard, deleteCardFromArray }: CardComponentProps){
   const [ lastSavedQuestionText, setlastSavedQuestionText ] = useState(card.initialQuestionText)
   const [ lastSavedAnswerText, setlastSavedAnswerText ] = useState(card.initialAnswerText)
 
@@ -65,7 +66,6 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
     }
   }    
 
-
   async function handleSaveChanges() {
     postChanges()
     setlastSavedQuestionText(currentQuestionText)
@@ -78,6 +78,18 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
     setCurrentQuestionText(lastSavedQuestionText)
     setCurrentAnswerText(lastSavedAnswerText)
     setEditingCard(false)
+  }
+
+  
+  async function deleteCard() {
+    try{
+      await api.delete(`/cards/${card.id}`)
+      deleteCardFromArray(card.id)
+      
+
+    }catch(err){
+      console.log(err)
+    }
   }
 
   useEffect(() => {
@@ -100,9 +112,16 @@ export function Card({ card, handleCallNextCard }: CardComponentProps){
 
       {/* Button to start editting */}
       { (isShowingAnwser && !isEditingCard) &&
-        <button className="absolute top-4 right-5 flex" onClick={() => setEditingCard(true)}>
-          <Text size="sm" className="text-gray-400 text-sm">Editar</Text>
-        </button>
+        <div className="absolute top-4 right-5 flex gap-1">
+          <button onClick={() => setEditingCard(true)}>
+            <Text size="sm" className="text-gray-400 text-sm">Editar</Text>
+          </button>
+            <Text size="sm" className="text-gray-400 text-sm"> / </Text>
+          <button onClick={() => deleteCard()}>
+            <Text size="sm" className="text-red-300 opacity-80 transpa text-sm">Excluir</Text>
+          </button>
+
+        </div>
       }
 
       {/* Text areas of question and answer */}

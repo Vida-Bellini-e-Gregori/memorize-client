@@ -8,9 +8,9 @@ export function MainFilter() {
     {id: 1, name: 'Portugues'},
     {id: 2, name: 'Geografia'},
     {id: 3, name: 'Matemática', subjects: [
-      {id: 31, name: 'Funções'},
-      {id: 32, name: 'Zap'},
-      {id: 33, name: 'Bitter'},
+      // {id: 31, name: 'Funções'},
+      // {id: 32, name: 'Zap'},
+      // {id: 33, name: 'Bitter'},
     ]},
   ]
 
